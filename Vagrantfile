@@ -15,5 +15,6 @@ Vagrant.configure(2) do |config|
     vb.name = "ubuntu_bsa.rdf"
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
   end
+  config.vm.provision "shell", path: "./provision/ssh-user.sh"
   config.vm.provision "shell", path: "./provision/network.sh"
 end

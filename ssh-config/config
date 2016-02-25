@@ -1,0 +1,8 @@
+Host	BSA2
+	HostName 192.168.50.40
+	User vagrant
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	IdentityFile ./ssh-config/id_rsa
+  PubkeyAuthentication yes
+  PasswordAuthentication no
