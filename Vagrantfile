@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
      bridge: "eth0",
      use_dhcp_assigned_default_route: true
 
-    gw.vm.provision "shell", path: "./provision/sshd_config.sh"
+    gw.vm.provision "shell", path: "./provision/gw/sshd_config.sh"
     gw.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_gw.rdf"
     end
