@@ -1,7 +1,7 @@
 clean: destroy up halt startvm
 
 startvm:
-	VBoxManage startvm ubuntu_bsa.rdf
+	VBoxManage startvm ubuntu_bsa_gw.rdf
 
 destroy:
 	vagrant destroy --force
