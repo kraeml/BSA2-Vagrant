@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
 
   # Das Gateway
   config.vm.define "gw" do | gw |
+    gw.vm.hostname = "gw"
     # Bitte in hosts eintragen.
     # 192.168.50.4 ubuntu_itec ubuntu_itec
     # Somit kann mit ping ubuntu_itec bzw. http://ubuntu_itec
@@ -48,6 +49,7 @@ Vagrant.configure(2) do |config|
 
   # Der erste Client
   config.vm.define "pc1" do | pc1 |
+    pc1.vm.hostname = "pc1"
     # Das Blaue Netzwerk
     pc1.vm.network "private_network",
      ip: "192.168.33.3",
@@ -60,6 +62,7 @@ Vagrant.configure(2) do |config|
 
   # Der zweit Client
   config.vm.define "pc2" do | pc2 |
+    pc2.vm.hostname = "pc2"
     # Das Blaue Netzwerk
     pc2.vm.network "private_network",
      ip: "192.168.33.4",
@@ -72,6 +75,7 @@ Vagrant.configure(2) do |config|
 
   # Der dritte Client
   config.vm.define "pc3" do | pc3 |
+    pc3.vm.hostname = "pc3"
     # Das Blaue Netzwerk
     pc3.vm.network "private_network",
      ip: "192.168.33.5",
@@ -84,6 +88,7 @@ Vagrant.configure(2) do |config|
 
   # Der vierte Client
   config.vm.define "pc4" do | pc4 |
+    pc4.vm.hostname = "pc4"
     # Das Blaue Netzwerk
     pc4.vm.network "private_network",
      ip: "192.168.33.6",
