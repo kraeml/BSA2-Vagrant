@@ -6,7 +6,7 @@ startvms: startvm-gw startvm-pc1 startvm-pc2 startvm-pc3 startvm-pc4
 
 startvm-gw:
 	VBoxManage startvm ubuntu_bsa_gw.rdf
-	sleep 10
+	sleep 15
 
 startvm-pc1:
 	VBoxManage startvm ubuntu_bsa_pc1.rdf
@@ -83,7 +83,7 @@ stopvm-pc4:
 	VBoxManage controlvm ubuntu_bsa_pc4.rdf acpipowerbutton
 
 ssh:
-	ssh -F ssh-config/config -i ssh-config/id_rsa BSA2
+	ssh -F ssh-config/config -i ssh-config/id_rsa_insecure_rdf BSA2
 
 up:
 	vagrant up
