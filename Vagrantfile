@@ -11,6 +11,7 @@ Vagrant.configure(2) do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+    vb.linked_clone = true
   end
 
   # Alle Maschinen führen diese Shellskripte aus.
