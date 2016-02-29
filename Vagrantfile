@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "gw" do | gw |
     gw.vm.hostname = "gw"
     # Bitte in hosts eintragen.
-    # 192.168.50.4 ubuntu_itec ubuntu_itec
+    # 192.168.50.40 ubuntu_itec ubuntu_itec
     # Somit kann mit ping ubuntu_itec bzw. http://ubuntu_itec
     # aufgerufen werden.
     gw.vm.network "private_network",

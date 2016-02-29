@@ -83,7 +83,7 @@ stopvm-pc4:
 	VBoxManage controlvm ubuntu_bsa_pc4.rdf acpipowerbutton
 
 ssh:
-	ssh -F ssh-config/config -i ssh-config/id_rsa_insecure_rdf BSA2
+	ssh -F ssh-config/config BSA2
 
 up:
 	vagrant up

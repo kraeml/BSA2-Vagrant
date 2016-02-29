@@ -3,6 +3,6 @@ Host	BSA2
 	User vagrant
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
-	IdentityFile ./ssh-config/id_rsa
+	IdentityFile ./ssh-config/id_rsa_insecure_rdf
   PubkeyAuthentication yes
   PasswordAuthentication no
