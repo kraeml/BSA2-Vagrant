@@ -83,6 +83,8 @@ stopvm-pc4:
 	VBoxManage controlvm ubuntu_bsa_pc4.rdf acpipowerbutton
 
 ssh:
+	chmod 700 ssh-config
+	chmod 600 ssh-config/*
 	ssh -F ssh-config/config BSA2
 
 up:
