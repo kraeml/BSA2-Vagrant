@@ -91,19 +91,19 @@ up:
 	vagrant up
 
 up-gw:
-	vagrant up-gw
+	vagrant up gw
 
 up-pc1:
-	vagrant up-pc1
+	vagrant up pc1
 
 up-pc2:
-	vagrant up-pc2
+	vagrant up pc2
 
 up-pc3:
-	vagrant up-pc3
+	vagrant up pc3
 
 up-pc4:
-	vagrant up-pc4
+	vagrant up pc4
 
 up-provision:
 	vagrant up --provision
