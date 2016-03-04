@@ -1,4 +1,5 @@
 #!/bin/bash
+# See: http://stackoverflow.com/questions/1494178/how-to-define-hash-tables-in-bash
 declare -A CONFIG_VARS=( \
   ["DEFAULT_LEASE_TIME"]="86400" \
   ["MAX_LEASE_TIME"]="86400" \
