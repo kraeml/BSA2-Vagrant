@@ -6,7 +6,7 @@ startvms: startvm-gw startvm-pc1 startvm-pc2 startvm-pc3 startvm-pc4
 
 startvm-gw:
 	VBoxManage startvm ubuntu_bsa_gw.rdf
-	sleep 15
+	sleep 20
 
 startvm-pc1:
 	VBoxManage startvm ubuntu_bsa_pc1.rdf
