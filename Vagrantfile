@@ -60,6 +60,7 @@ Vagrant.configure(2) do |config|
 
     pc1.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_pc1.rdf"
+      vb.customize ["modifyvm", :id, "--macaddress2", "0800272CC231"]
     end
   end
 
@@ -73,6 +74,7 @@ Vagrant.configure(2) do |config|
 
     pc2.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_pc2.rdf"
+      vb.customize ["modifyvm", :id, "--macaddress2", "0800272CC232"]
     end
   end
 
@@ -86,6 +88,7 @@ Vagrant.configure(2) do |config|
 
     pc3.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_pc3.rdf"
+      vb.customize ["modifyvm", :id, "--macaddress2", "0800272CC233"]
     end
   end
 
@@ -99,6 +102,7 @@ Vagrant.configure(2) do |config|
 
     pc4.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_pc4.rdf"
+      vb.customize ["modifyvm", :id, "--macaddress2", "0800272CC234"]
     end
   end
 end
