@@ -16,32 +16,23 @@ declare -A CONFIG_VARS=( \
   ["_DNS_REVIP"]="2" \
 )
 
-sudo cp /vagrant/provision/ddns/files/db.empty /etc/bind/db.${CONFIG_VARS["_DOMAIN"]}
-for config in "${!CONFIG_VARS[@]}"
+for i in "_DOMAIN" "_REVERSEDOMAIN"
 do
-  #config_data=
-  #echo $config - $config_data
-  sed -i s/"$config"/"${CONFIG_VARS["$config"]}"/  /etc/bind/db.${CONFIG_VARS["_DOMAIN"]}
+  echo $i
+  # Erstellen der db-Dateien
+  sudo cp /vagrant/provision/ddns/files/db.empty /etc/bind/db.${CONFIG_VARS["$i"]}
+  for config in "${!CONFIG_VARS[@]}"
+  do
+    sed -i s/"$config"/"${CONFIG_VARS["$config"]}"/  /etc/bind/db.${CONFIG_VARS["$i"]}
+  done
+  # Einträge in der named.conf.local
+  printf "zone \"%s\" {\n" ${CONFIG_VARS["$i"]} >> /etc/bind/named.conf.local
+  printf "\ttype master;\n"  >> /etc/bind/named.conf.local
+  printf "\tfile \"/etc/bind/db.%s\";\n" ${CONFIG_VARS["$i"]} >> /etc/bind/named.conf.local
+  printf "};\n\n" >> /etc/bind/named.conf.local
 done
+
 echo -e "${CONFIG_VARS["_DNSNAME"]}\t\tA\t${CONFIG_VARS["_DNS_IP"]}" >> /etc/bind/db.${CONFIG_VARS["_DOMAIN"]}
-
-sudo cp /vagrant/provision/ddns/files/db.empty /etc/bind/db.${CONFIG_VARS["_REVERSEDOMAIN"]}
-for config in "${!CONFIG_VARS[@]}"
-do
-  #config_data=
-  #echo $config - $config_data
-  sed -i s/"$config"/"${CONFIG_VARS["$config"]}"/  /etc/bind/db.${CONFIG_VARS["_REVERSEDOMAIN"]}
-done
 echo -e "${CONFIG_VARS["_DNS_REVIP"]}\t\tPTR\t${CONFIG_VARS["ZONE_ORIGIN"]}" >> /etc/bind/db.${CONFIG_VARS["_REVERSEDOMAIN"]}
-
-printf "zone \"%s\" {\n" ${CONFIG_VARS["_DOMAIN"]} >> /etc/bind/named.conf.local
-printf "\ttype master;\n"  >> /etc/bind/named.conf.local
-printf "\tfile \"/etc/bind/db.%s\";\n" ${CONFIG_VARS["_DOMAIN"]} >> /etc/bind/named.conf.local
-printf "};\n\n" >> /etc/bind/named.conf.local
-
-printf "zone \"%s\" {\n" ${CONFIG_VARS["_REVERSEDOMAIN"]} >> /etc/bind/named.conf.local
-printf "\ttype master;\n"  >> /etc/bind/named.conf.local
-printf "\tfile \"/etc/bind/db.%s\";\n" ${CONFIG_VARS['_REVERSEDOMAIN']} >> /etc/bind/named.conf.local
-printf "};\n" >> /etc/bind/named.conf.local
 
 sudo service bind9 restart
