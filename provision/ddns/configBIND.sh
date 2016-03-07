@@ -28,11 +28,14 @@ do
   # Einträge in der named.conf.local
   printf "zone \"%s\" {\n" ${CONFIG_VARS["$i"]} >> /etc/bind/named.conf.local
   printf "\ttype master;\n"  >> /etc/bind/named.conf.local
-  printf "\tfile \"/etc/bind/db.%s\";\n" ${CONFIG_VARS["$i"]} >> /etc/bind/named.conf.local
+  printf "\tfile \"/var/cache/bind/db.%s\";\n" ${CONFIG_VARS["$i"]} >> /etc/bind/named.conf.local
   printf "};\n\n" >> /etc/bind/named.conf.local
 done
 
 echo -e "${CONFIG_VARS["_DNSNAME"]}\t\tA\t${CONFIG_VARS["_DNS_IP"]}" >> /etc/bind/db.${CONFIG_VARS["_DOMAIN"]}
 echo -e "${CONFIG_VARS["_DNS_REVIP"]}\t\tPTR\t${CONFIG_VARS["ZONE_ORIGIN"]}" >> /etc/bind/db.${CONFIG_VARS["_REVERSEDOMAIN"]}
+
+sudo ln -s /etc/bind/db.gxy.rdf.loc /var/cache/bind/
+sudo ln -s /etc/bind/db.33.168.192.in-addr.arpa /var/cache/bind/
 
 sudo service bind9 restart

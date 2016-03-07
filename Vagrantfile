@@ -46,7 +46,9 @@ Vagrant.configure(2) do |config|
     gw.vm.provision "shell", path: "./provision/ddns/configDHCP.sh"
     gw.vm.provision "shell", path: "./provision/ddns/configBIND.sh"
     gw.vm.provision "shell", path: "./provision/ddns/createKey.sh"
-    
+    gw.vm.provision "shell", path: "./provision/ddns/distributeKey.sh"
+    gw.vm.provision "shell", path: "./provision/ddns/configDHCP-BIND.sh"
+
     gw.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_gw.rdf"
     end
