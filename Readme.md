@@ -2,7 +2,7 @@
 
 Eintrag in `hosts`
 
-`192.168.50.40   bsa2.bsa2.rdf   bsa2`
+`192.168.5.40 bsa2-gw bsa2-gw`
 
 ## SSH
 
