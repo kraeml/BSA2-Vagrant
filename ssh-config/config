@@ -1,44 +1,11 @@
-Host	BSA2
-	HostName 192.168.50.40
-	User vagrant
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	IdentityFile ./ssh-config/id_rsa_insecure_rdf
-  PubkeyAuthentication yes
+Host gw
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
   PasswordAuthentication no
+  IdentityFile /home/michl/Dokumente/Schule/2_Semester/BSA2/bsa2-Grundnetz/.vagrant/machines/gw/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
 
-Host PC1
-	HostName 192.168.33.3
-	User vagrant
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	IdentityFile ~/.ssh/id_rsa_insecure_rdf
-  PubkeyAuthentication yes
-  PasswordAuthentication no
-
-Host PC2
-	HostName 192.168.33.4
-	User vagrant
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	IdentityFile ~/.ssh/id_rsa_insecure_rdf
-  PubkeyAuthentication yes
-  PasswordAuthentication no
-
-Host PC3
-	HostName 192.168.33.5
-	User vagrant
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	IdentityFile ~/.ssh/id_rsa_insecure_rdf
-  PubkeyAuthentication yes
-  PasswordAuthentication no
-
-Host PC4
-	HostName 192.168.33.6
-	User vagrant
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	IdentityFile ~/.ssh/id_rsa_insecure_rdf
-  PubkeyAuthentication yes
-  PasswordAuthentication no
