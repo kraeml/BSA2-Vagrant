@@ -11,21 +11,16 @@ Vagrant.configure(2) do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
     vb.linked_clone = true
   end
-
-  # Alle Maschinen führen diese Shellskripte aus.
-  # Netzwerk für eth0 abschalten
-  #config.vm.provision "shell", path: "./provision/network.sh"
-  # Denn ssh-user einrichten
-  #config.vm.provision "shell", path: "./provision/ssh-user.sh"
 
   # Das Gateway
   config.vm.define "gw" do | gw |
     gw.vm.hostname = "gw"
     # Bitte in hosts eintragen.
-    # 192.168.50.40 ubuntu_itec ubuntu_itec
-    # Somit kann mit ping ubuntu_itec bzw. http://ubuntu_itec
+    # 192.168.5.40 bsa2-gw bsa2-gw
+    # Somit kann mit ping bsa2-gw bzw. http://bsa2-gw
     # aufgerufen werden.
     gw.vm.network "private_network",
      ip: "192.168.4.40"
@@ -41,13 +36,12 @@ Vagrant.configure(2) do |config|
      bridge: "eth0",
      use_dhcp_assigned_default_route: true
 
-    #gw.vm.provision "shell", path: "./provision/gw/sshd_config.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/install.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/configDHCP.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/configBIND.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/createKey.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/distributeKey.sh"
-    #gw.vm.provision "shell", path: "./provision/ddns/configDHCP-BIND.sh"
+    # Share an additional folder to the guest VM. The first argument is
+    # the path on the host to the actual folder. The second argument is
+    # the path on the guest to mount the folder. And the optional third
+    # argument is a set of non-required options.
+    gw.vm.synced_folder "./www", "/home/vagrant/www"
+    gw.vm.synced_folder "./data", "/home/vagrant/data"
 
     gw.vm.provider "virtualbox" do |vb|
       vb.name = "ubuntu_bsa_gw.rdf"
