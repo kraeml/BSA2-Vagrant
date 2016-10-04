@@ -1,4 +1,14 @@
-# Für Ansbindung dhcp an dns
+# Anleitung
+
+vagrant up
+
+vagrant ssh
+
+cd data
+
+git clone git clone <https://github.com/kraeml/Linux-kompakt.git>
+
+## Für Ansbindung dhcp an dns
 
 Eintrag in `hosts`
 
