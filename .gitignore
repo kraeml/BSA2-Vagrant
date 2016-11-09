@@ -1,2 +1,5 @@
 .vagrant/
 data/*
+provision/
+ssh-config/
+www/

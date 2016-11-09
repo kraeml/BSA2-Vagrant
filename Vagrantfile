@@ -1,5 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 Vagrant.configure(2) do |config|
-  config.vm.box = "kraeml/ubuntu_de"
+  config.vm.box = "kraeml/xenial-64-de"
   # Falls vbguest-plugin bitte Guest nachladen
   if Vagrant.has_plugin?("vagrant-vbguest") then
     config.vbguest.auto_update = true
@@ -12,12 +15,13 @@ Vagrant.configure(2) do |config|
     vb.memory = "1024"
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
     vb.customize ["modifyvm", :id, "--cpus", 2]
-    vb.linked_clone = true
+    vb.linked_clone = true if Vagrant::VERSION =~ /^1.8/
   end
 
   # Das Gateway
-  config.vm.define "gw" do | gw |
-    gw.vm.hostname = "gw"
+  config.vm.define "bsa2-gw" do | gw |
+    gw.vm.box = "kraeml/ubuntu_de"
+    gw.vm.hostname = "bsa2-gw"
     # Bitte in hosts eintragen.
     # 192.168.5.40 bsa2-gw bsa2-gw
     # Somit kann mit ping bsa2-gw bzw. http://bsa2-gw
