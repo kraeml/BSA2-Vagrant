@@ -13,7 +13,3 @@ git clone git clone <https://github.com/kraeml/Linux-kompakt.git>
 Eintrag in `hosts`
 
 `192.168.5.40 bsa2-gw bsa2-gw`
-
-## SSH
-
-Pasphrase: geheim
